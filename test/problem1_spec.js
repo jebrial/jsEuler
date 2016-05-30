@@ -26,16 +26,12 @@ function sumOfMultiples(multiplesArr, threshold) {
 	multiplesArr.map((n) => productOfm *= n)
 
 	for (let i = productOfm; i < threshold; i += productOfm) {
-		if(!(i % productOfm)) {
 			exclusions += i
-		}
 	}
 
 	multiplesArr.map((n) => {
 		for (let i = n; i < threshold; i += n) {
-			if(!(i % n)) {
 				sum += i
-			}
 		}
 	})
 
