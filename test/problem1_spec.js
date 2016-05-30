@@ -9,21 +9,35 @@ import {expect} from 'chai';
 
 describe('Problem 1', () => {
 	it('Find the sum of all the multiples of 3 or 5 below 10.', () => {
-		expect(sumOf3and5Multiples(10)).to.equal(23);
+		expect(sumOfMultiples([3,5],10)).to.equal(23);
 	});
 	it('Find the sum of all the multiples of 3 or 5 below 1000.', () => {
-		console.time('problem1')
-	  	expect(sumOf3and5Multiples(1000)).to.equal(233168);
-		console.timeEnd('problem1')
+		console.time('problem 1')
+	  	expect(sumOfMultiples([3,5],1000)).to.equal(233168);
+		console.timeEnd('problem 1')
 	});
 });
 
-function sumOf3and5Multiples(threshold) {
+function sumOfMultiples(multiplesArr, threshold) {
 	let sum = 0
-	for (let i = 1; i < threshold; i++) {
-		if(!(i % 3) || !(i%5) ) {
-			sum += i
+	let productOfm = 1
+	let exclusions = 0
+
+	multiplesArr.map((n) => productOfm *= n)
+
+	for (let i = productOfm; i < threshold; i += productOfm) {
+		if(!(i % productOfm)) {
+			exclusions += i
 		}
 	}
-	return sum
+
+	multiplesArr.map((n) => {
+		for (let i = n; i < threshold; i += n) {
+			if(!(i % n)) {
+				sum += i
+			}
+		}
+	})
+
+	return sum - exclusions
 }
