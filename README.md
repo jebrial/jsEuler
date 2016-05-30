@@ -11,5 +11,16 @@ You can view all the problems here: [https://projecteuler.net/archives](https://
 
 To learn more about javascript I recommend: [http://www.2ality.com/](http://www.2ality.com/)
 
-** To run:
-From terminal: npm install; npm run test
+To run from terminal:
+
+Install:
+
+```sh
+npm install
+```
+
+And run test:
+
+```sh
+npm run test
+```
